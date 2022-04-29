@@ -1,0 +1,50 @@
+[alias]
+  # List all available aliases
+  alias = !git config --get-regexp ^alias\\. | sed -e s/^alias\\.// -e s/\\ /\\ =\\ /
+  # List all branches
+  branches = branch -a
+  # Delete a branch
+  delete = branch -d
+  # Checkout
+  cd = checkout
+  # Rebase on top of origin/main, interactive
+  rb = rebase origin/main -i
+  # Continue rebase
+  rbc = rebase --continue
+  # Abort rebase
+  rba = rebase --abort
+  # Hard resets the local branch to the remote version.
+  # WARNING: Any changes comitted will be lost. This is a destructive command!
+  hardreset = "!f(){ read -n 1 -r -p 'Are you sure that you want to run git hardreset? [Y/n] '; echo; [[ $REPLY =~ ^[Yy]$ ]] && echo; git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; f"
+[commit]
+  gpgsign = true
+[core]
+  autoctrlf = false
+  excludesfile = "~/.gitignore_global"
+  editor = code
+[credential]
+	helper = manager-core
+[diff]
+	tool = vscode
+[diff "vscode"]
+	cmd = code --wait --diff $LOCAL $REMOTE
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[init]
+  defaultBranch = main
+[merge]
+	tool = vscode
+[mergetool "vscode"]
+	cmd = code --wait $MERGED
+[pager]
+  branch = false
+[pull]
+  rebase = true
+[tag]
+  forceSignAnnotated = true
+[user]
+  name = RealShadowNova
+  email = real.shadow.nova@gmail.com
