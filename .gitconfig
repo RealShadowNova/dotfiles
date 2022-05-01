@@ -4,7 +4,7 @@
   # List all branches
   branches = branch -a
   # Delete a branch
-  delete = branch -d
+  delete = branch -D
   # Checkout
   cd = checkout
   # Rebase on top of origin/main, interactive
