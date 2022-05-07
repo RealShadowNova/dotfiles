@@ -7,19 +7,27 @@
   delete = branch -D
   # Checkout
   cd = checkout
+  # Hard resets the local branch to the remote version.
+  # WARNING: Any changes comitted will be lost. This is a destructive command!
+  hardreset = "!f(){ read -n 1 -r -p 'Are you sure that you want to run git hardreset? [Y/n] '; echo; [[ $REPLY =~ ^[Yy]$ ]] && echo; git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; f"
   # Rebase on top of origin/main, interactive
-  rb = rebase origin/main -i
+  rbi = rebase origin/main -i
+  # Rebase on top of origin/main, non-interactive
+  rb = rebase origin/main
   # Continue rebase
   rbc = rebase --continue
   # Abort rebase
   rba = rebase --abort
-  # Hard resets the local branch to the remote version.
-  # WARNING: Any changes comitted will be lost. This is a destructive command!
-  hardreset = "!f(){ read -n 1 -r -p 'Are you sure that you want to run git hardreset? [Y/n] '; echo; [[ $REPLY =~ ^[Yy]$ ]] && echo; git reset --hard origin/$(git rev-parse --abbrev-ref HEAD); }; f"
+  # Squash parameter given amount of commits
+  squash = "!f(){ git rebase -i HEAD~$1; }; f"
+  # Yeet a PR to GitHub
+  yeet = !gh pr create
+  # Commit with whatthecommit.com
+  commit = "!f() { response=$(curl -s http://whatthecommit.com/index.json); message=$(echo ${response} | jq -r '.commit_message'); link=$(echo ${response} | jq -r '.permalink'); git commit $@ -nam \"chore: $(echo ${message} | tr '[:upper:]' '[:lower:]')\" -m \"permalink: ${link}\"; }; f"
 [commit]
   gpgsign = true
 [core]
-  autoctrlf = false
+  autocrlf = false
   excludesfile = "~/.gitignore_global"
   editor = code
 [credential]
@@ -48,3 +56,4 @@
 [user]
   name = RealShadowNova
   email = real.shadow.nova@gmail.com
+  signingkey = PLACEHOLDER_SIGNINGKEY
