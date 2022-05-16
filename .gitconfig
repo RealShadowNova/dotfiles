@@ -23,7 +23,7 @@
   # Yeet a PR to GitHub
   yeet = !gh pr create
   # Commit with whatthecommit.com
-  commit = "!f() { response=$(curl -s http://whatthecommit.com/index.json); message=$(echo ${response} | jq -r '.commit_message'); link=$(echo ${response} | jq -r '.permalink'); git commit $@ -nam \"chore: $(echo ${message} | tr '[:upper:]' '[:lower:]')\" -m \"permalink: ${link}\"; }; f"
+  yolo = "!f() { response=$(curl -s http://whatthecommit.com/index.json); message=$(echo ${response} | jq -r '.commit_message'); link=$(echo ${response} | jq -r '.permalink'); git commit $@ -nam \"chore: $(echo ${message} | tr '[:upper:]' '[:lower:]')\" -m \"permalink: ${link}\"; }; f"
 [commit]
   gpgsign = true
 [core]
