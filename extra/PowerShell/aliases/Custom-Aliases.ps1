@@ -1,0 +1,1 @@
+Set-Alias -Name josh-development -Value Set-JoshDevelopment-Location
