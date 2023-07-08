@@ -31,13 +31,13 @@
 [core]
   autocrlf = false
   excludesfile = "~/.gitignore_global"
-  editor = code
+  editor = \"C:\\Programs\\Microsoft VS Code\\bin\\code\" --wait
 [credential]
 	helper = manager-core
 [diff]
 	tool = vscode
-[diff "vscode"]
-	cmd = code --wait --diff $LOCAL $REMOTE
+[difftool "vscode"]
+  cmd = code -wr --diff $LOCAL $REMOTE
 [filter "lfs"]
   clean = git-lfs clean -- %f
   smudge = git-lfs smudge -- %f
@@ -48,9 +48,13 @@
 [merge]
 	tool = vscode
 [mergetool "vscode"]
-	cmd = code --wait $MERGED
+  cmd = code -wr $MERGED
 [pager]
   branch = false
+  diff = delta
+  log = delta
+  reflog = delta
+  show = delta
 [pull]
   rebase = true
 [rebase]
