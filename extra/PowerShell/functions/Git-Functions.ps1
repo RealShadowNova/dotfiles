@@ -1,3 +1,18 @@
+Function Get-Current-Git-Branch() {
+	git rev-parse --abbrev-ref HEAD
+}
+
+function Get-Main-Git-Branch() {
+	git show-ref -q --verify refs/heads/main
+
+	if ($LastExitCode -eq 0) {
+		Write-Output 'main'
+	}
+	else {
+		Write-Output 'master'
+	}
+}
+
 Function Get-All-Repos {
 	Get-ChildItem -Directory -Hidden -Filter '.git' -Recurse -Depth 2 -Exclude node_modules | ForEach-Object {
 		$dirname = $_

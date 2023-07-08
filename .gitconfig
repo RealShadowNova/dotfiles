@@ -24,8 +24,8 @@
   squashdiff = !git rebase -i HEAD~$(git rev-list --count origin/main..$(git rev-parse --abbrev-ref HEAD))
   # Yeet a PR to GitHub
   yeet = !gh pr create
-  # Commit with whatthecommit.com
-  yolo = "!f() { response=$(curl -s http://whatthecommit.com/index.json); message=$(echo ${response} | jq -r '.commit_message'); link=$(echo ${response} | jq -r '.permalink'); git commit $@ -nam \"chore: $(echo ${message} | tr '[:upper:]' '[:lower:]')\" -m \"permalink: ${link}\"; }; f"
+  # Commit with whatthecommit
+  yolo = !git commit -nam \"chore: $(curl -sL https://whatthecommit.com/index.txt | tr '[:upper:]' '[:lower:]')\"
 [commit]
   gpgsign = true
 [core]
