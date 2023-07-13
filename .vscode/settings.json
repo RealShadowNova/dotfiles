@@ -1,0 +1,40 @@
+{
+  "editor.fontFamily": "Fire Code",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.fontWeight": "500",
+  "editor.formatOnSave": true,
+  "editor.minimap.autohide": true,
+  "editor.minimap.renderCharacters": false,
+  "editor.stickyScroll.enabled": true,
+  "git.autofetch": true,
+  "git.mergeEditor": true,
+  "github.copilot.enable": {
+    "*": true
+  },
+  "prettier.requireConfig": true,
+  "terminal.integrated.profiles.windows": {
+    "Command Prompt": {
+      "args": [],
+      "icon": "terminal-cmd",
+      "path": [
+        "${env:windir}\\Sysnative\\cmd.exe",
+        "${env:windir}\\System32\\cmd.exe"
+      ]
+    },
+    "Git Bash": {
+      "source": "Git Bash"
+    },
+    "PowerShell": {
+      "icon": "terminal-powershell",
+      "source": "PowerShell"
+    }
+  },
+  "window.title": "${dirty}${activeEditorShort}${separator}${remoteName}${rootName}${separator}${appName}",
+  "workbench.colorTheme": "Atom One Dark",
+  "workbench.editor.wrapTabs": true,
+  "workbench.iconTheme": "material-icon-theme",
+  "workbench.preferredDarkColorTheme": "Atom One Dark",
+  "workbench.preferredHighContrastColorTheme": "Atom One Dark",
+  "workbench.preferredLightColorTheme": "Atom One Dark"
+}
